@@ -4,6 +4,7 @@ check50:
     - !include "*.sql"
     - !require "part1.sql"
     - !require "part2.sql"
+    - !require "p1.sql"
 
 submit50:
   files: *check50_files
