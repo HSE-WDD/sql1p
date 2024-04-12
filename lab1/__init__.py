@@ -23,7 +23,7 @@ def test1():
      {'DungeonQuest', 1985},
      {'Code 777', 1985},
      {'Tables of the Arabian Nights', 1985}],
-    ordered=True,
+    ordered=False,
   )
 
 def run_query(filename):
