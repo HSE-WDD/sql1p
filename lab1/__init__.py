@@ -12,6 +12,13 @@ def exists():
 
 
 @check50.check(exists)
+def log_file():
+  """log p1 file contains SELECT queries"""
+  p1 = open("p1.sql").read().lower()
+  if "select" not in p1:
+    raise check50.Failure(f"missing SELECT queries in p1.sql")
+
+@check50.check(exists)
 def test1():
   """p1.sql produces correct result"""
   check_multi_col(
