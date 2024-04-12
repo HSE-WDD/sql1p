@@ -41,7 +41,7 @@ def run_query(filename):
         with open(filename) as f:
             query = f.read().strip()
             query = sqlparse.format(query, strip_comments=True).strip()
-        db = SQL("sqlite:///cyberchase.db")
+        db = SQL("sqlite:///sql_practice.db")
         result = db.execute(query)
         return result
     except Exception as e:
