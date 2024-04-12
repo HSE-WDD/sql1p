@@ -12,8 +12,8 @@ def exists():
 
 
 @check50.check(exists)
-def log_file():
-  """log p1 file contains SELECT queries"""
+def p1_file():
+  """p1 file contains SELECT queries"""
   p1 = open("p1.sql").read().lower()
   if "select" not in p1:
     raise check50.Failure(f"missing SELECT queries in p1.sql")
@@ -23,13 +23,13 @@ def test1():
   """p1.sql produces correct result"""
   check_multi_col(
     run_query("p1.sql"), 
-    [{'Advanced Squad Leader', 1985},
-     {'BattleTech', 1985},
-     {'World in Flames', 1985},
-     {"You're Bluffing!", 1985},
-     {'DungeonQuest', 1985},
-     {'Code 777', 1985},
-     {'Tables of the Arabian Nights', 1985}],
+    [{'Advanced Squad Leader', '1985'},
+     {'BattleTech', '1985'},
+     {'World in Flames', '1985'},
+     {"You're Bluffing!", '1985'},
+     {'DungeonQuest', '1985'},
+     {'Code 777', '1985'},
+     {'Tables of the Arabian Nights', '1985'}],
     ordered=False,
   )
 
