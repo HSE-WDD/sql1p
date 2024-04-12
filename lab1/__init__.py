@@ -25,3 +25,33 @@ def test1():
      {'Tables of the Arabian Nights', '1985'}],
     ordered=False,
   )
+
+
+def check_multi_col(actual, expected, ordered=False):
+    """
+    Checks that the columns in 'actual' matches 'expected'.
+
+    positional arguments:
+        actual (list[dict])       result returned by run_query
+        expected (list[set])      expected result to match against
+
+    options:
+        ordered (bool)            whether to check whether actual's order matches expected's
+
+    returns:
+        None
+
+    raises:
+        check50.Mismatch if actual does not match expected
+        check50.Failure if error occurs
+    """
+
+    # convert list of sets to list of frozen sets or set of frozen sets
+    try:
+        if ordered:
+            expected = [frozenset(unfrozen_set) for unfrozen_set in expected]
+        else:
+            expected = {frozenset(unfrozen_set) for unfrozen_set in expected}
+    except Exception as e:
+        raise check50.Failure(f"Error when reading expected result: {str(e)}")
+    return _check(actual, expected, ordered)
